@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/push_notification"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Bildirim Gönder
+" />
+
+    </group>
+
+    <item android:title="Kullanıcı İşlemleri">
+        <menu>
+            <item
+            android:id="@+id/addUser"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Kullanıcı Ekle" />
+            <item
+                android:id="@+id/remove_user"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Kullanıcı Sil veya Değiştir" />
+
+        </menu>
+    </item>
+    <item android:title="Kategori İşlemleri">
+        <menu>
+            <item
+                android:id="@+id/addCategory"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Kategori Ekle" />
+            <item
+                android:id="@+id/removeCategory"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Kategori Sil" />
+
+        </menu>
+    </item>
+    <item
+        android:id="@+id/exit"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Çıkış" />
+</menu>
