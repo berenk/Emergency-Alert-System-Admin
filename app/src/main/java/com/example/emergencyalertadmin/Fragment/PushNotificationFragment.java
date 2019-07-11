@@ -31,7 +31,12 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,23 +107,26 @@ public class PushNotificationFragment extends Fragment {
         Map<String, Object> notif = new HashMap<>();
         notif.put("title", title);
         notif.put("body", body);
-        notif.put(selectedCategory, true);
+        notif.put("category", selectedCategory);
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+        String formattedDate = df.format(c);
+
 
 // Add a new document with a generated ID
         db.collection("Notifications")
-                .add(notif)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("", "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("", "Error adding document", e);
-                    }
-                });
+                .document(formattedDate).set(notif).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                System.out.println("veri ekleme başarılı");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                System.out.println("veri ekleme basarisiz" + e.toString());
+            }
+        });
+
     }
 
     public void fill_list() {
