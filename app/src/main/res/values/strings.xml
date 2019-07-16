@@ -10,4 +10,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="kullanici_adi_text">Kullanıcı Adı</string>
+    <string name="sifre_text">Şifre</string>
 </resources>
