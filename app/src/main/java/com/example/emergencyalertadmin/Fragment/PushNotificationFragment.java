@@ -80,6 +80,10 @@ public class PushNotificationFragment extends Fragment {
                     NotificationModel notificationModel = new NotificationModel(title.getText().toString(), body.getText().toString(), spinner.getSelectedItem().toString());
                     UtilsRetrofit.getOurInstance().sendNotification(notificationModel, getActivity());
                     insertData(title.getText().toString(), body.getText().toString(), spinner.getSelectedItem().toString());
+                    Toast.makeText(getActivity(), "Duyuru başarıyla gönderildi", Toast.LENGTH_LONG).show();
+                    title.getText().clear();
+                    body.getText().clear();
+
                 }
             }
         });

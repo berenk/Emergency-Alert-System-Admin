@@ -43,6 +43,8 @@ public class AddCategoryFragment extends Fragment {
             public void onClick(View v) {
                 searchCategory(category_name.getText().toString(),category_description.getText().toString());
                 System.out.println();
+                category_description.getText().clear();
+                category_name.getText().clear();
             }
         });
         return view;

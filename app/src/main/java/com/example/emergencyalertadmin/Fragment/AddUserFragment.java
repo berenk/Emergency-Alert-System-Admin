@@ -54,6 +54,7 @@ public class AddUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                  searchUser(username.getText().toString());
+                 username.getText().clear();
             }
         });
         list();
@@ -100,6 +101,8 @@ public class AddUserFragment extends Fragment {
                     } else {
                         addUser(username, spinner.getSelectedItem().toString());
                         Toast.makeText(getActivity(), "Oluşturuldu", Toast.LENGTH_LONG).show();
+
+
                     }
                 } else {
                     Log.d("", "get failed with ", task.getException());
