@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.example.emergencyalertadmin.Fragment.AddCategoryFragment;
 import com.example.emergencyalertadmin.Fragment.AddUserFragment;
@@ -25,6 +26,7 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     FirebaseAuth auth;
     FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class Main2Activity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main2, menu);
+
         return true;
     }
 
@@ -73,9 +76,12 @@ public class Main2Activity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -87,9 +93,12 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.push_notification) {
+        if (id == R.id.push_notification ) {
+
             ChangeFragment changeFragment = new ChangeFragment(this);
             changeFragment.change(new PushNotificationFragment());
+            item.setChecked(false);
+
         } else if (id == R.id.addUser) {
             ChangeFragment changeFragment = new ChangeFragment(this);
             changeFragment.change(new AddUserFragment());
@@ -108,6 +117,7 @@ public class Main2Activity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }
