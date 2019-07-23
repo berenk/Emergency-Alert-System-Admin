@@ -93,8 +93,8 @@ public class Main2Activity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            createDialog();
-            super.onBackPressed();
+            createDialog_backpress();
+
         }
     }
 
@@ -187,5 +187,26 @@ public class Main2Activity extends AppCompatActivity
         Intent intent= new Intent(getApplicationContext(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+    private void createDialog_backpress() {
+        AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
+        alertDlg.setMessage("Çıkış yapmak istediğinizden emin misiniz?");
+        alertDlg.setCancelable(false);
+
+        alertDlg.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        alertDlg.setNegativeButton("Iptal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+
+            }
+        });
+        alertDlg.create().show();
     }
 }
