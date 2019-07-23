@@ -14,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.emergencyalertadmin.Fragment.AddCategoryFragment;
 import com.example.emergencyalertadmin.Fragment.AddUserFragment;
@@ -40,6 +42,10 @@ public class Main2Activity extends AppCompatActivity
     FirebaseUser user;
      private RecyclerView mMainList;
      private FirebaseFirestore mFirestore;
+
+     private TextView usernameTextView;
+     private TextView usermailTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +73,8 @@ public class Main2Activity extends AppCompatActivity
         });
 */
 
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -85,6 +93,16 @@ public class Main2Activity extends AppCompatActivity
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         }
+
+        //giriş yapan kişinin adını ve mail adresini göster
+        View navHeader = navigationView.getHeaderView(0);
+        usernameTextView = navHeader.findViewById(R.id.nav_username);
+        usermailTextView = navHeader.findViewById(R.id.nav_usermail);
+
+        usernameTextView.setText(user.getDisplayName());
+        usermailTextView.setText(user.getEmail());
+
+
     }
 
     @Override
@@ -166,7 +184,7 @@ public class Main2Activity extends AppCompatActivity
     }
     private void createDialog_backpress() {
         AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
-        alertDlg.setMessage("Çıkış yapmak istediğinizden emin misiniz?");
+        alertDlg.setMessage("Uygulamadan çıkış yapmak istediğinizden emin misiniz?");
         alertDlg.setCancelable(false);
 
         alertDlg.setPositiveButton("Evet", new DialogInterface.OnClickListener() {

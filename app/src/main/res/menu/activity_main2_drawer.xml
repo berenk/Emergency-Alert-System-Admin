@@ -16,11 +16,11 @@
         <menu>
             <item
             android:id="@+id/addUser"
-            android:icon="@drawable/add_user_icon"
+            android:icon="@drawable/ic_user"
             android:title="Kullanıcı Ekle" />
             <item
                 android:id="@+id/remove_user"
-                android:icon="@drawable/delete_icon"
+                android:icon="@drawable/ic_delete"
                 android:title="Kullanıcı Sil veya Değiştir" />
 
         </menu>
@@ -29,17 +29,17 @@
         <menu>
             <item
                 android:id="@+id/addCategory"
-                android:icon="@drawable/add_icon"
+                android:icon="@drawable/ic_add"
                 android:title="Kategori Ekle" />
             <item
                 android:id="@+id/removeCategory"
-                android:icon="@drawable/delete_icon"
+                android:icon="@drawable/ic_delete"
                 android:title="Kategori Sil" />
 
         </menu>
     </item>
     <item
         android:id="@+id/exit"
-        android:icon="@drawable/sign_out"
+        android:icon="@drawable/ic_signout"
         android:title="Çıkış" />
 </menu>

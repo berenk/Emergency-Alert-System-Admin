@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="310dp"
-        android:layout_height="95dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -23,20 +23,20 @@
         app:srcCompat="@drawable/header_nav" />
 
     <TextView
+        android:id="@+id/nav_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Ümit Deniz Uluşar"
+
         android:textColor="#fff"
         android:textStyle="italic"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nav_usermail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle"
+        android:gravity="center"
         android:layout_gravity="center"/>
 
 </LinearLayout>
