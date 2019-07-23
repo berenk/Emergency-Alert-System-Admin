@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements  ILoginView {
                         editor.putString("pref_pass",password.getText().toString());
                         editor.putBoolean("pref_check",boolisChecked);
                         editor.apply();
-                        Toast.makeText(getApplicationContext(),"Kullanici bilgileri kaydedildi", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Kullanıcı bilgileri kaydedildi", Toast.LENGTH_SHORT).show();
 
                     }else{
                         System.out.println("checkbox tikli degil");

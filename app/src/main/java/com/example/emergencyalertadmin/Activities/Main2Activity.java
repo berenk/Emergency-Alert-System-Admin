@@ -98,44 +98,19 @@ public class Main2Activity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
-            return true;
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        item.setCheckable(true);
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
 
         if (id == R.id.push_notification ) {
 
             ChangeFragment changeFragment = new ChangeFragment(this);
             changeFragment.change(new PushNotificationFragment());
-            item.setChecked(false);
-
+            
         } else if (id == R.id.addUser) {
             ChangeFragment changeFragment = new ChangeFragment(this);
             changeFragment.change(new AddUserFragment());
@@ -158,6 +133,7 @@ public class Main2Activity extends AppCompatActivity
 
         return true;
     }
+
 
     private void createDialog() {
         AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
