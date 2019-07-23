@@ -1,6 +1,8 @@
 package com.example.emergencyalertadmin;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,7 +43,24 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment.remove(holder.category.getText().toString());
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(v.getContext());
+                alertDialog.setMessage("Kategoriyi silmek istediğinizden emin misiniz?");
+                alertDialog.setCancelable(false);
+                alertDialog.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        fragment.remove(holder.category.getText().toString());
+
+                    }
+                });
+                alertDialog.setNegativeButton("Iptal", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.create().show();
+
             }
         });
     }

@@ -1,6 +1,8 @@
 package com.example.emergencyalertadmin;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -59,7 +61,27 @@ public class RemoveUserAdapter extends RecyclerView.Adapter<RemoveUserAdapter.My
         myViewHolder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment.remove(myViewHolder.username.getText().toString());
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(v.getContext());
+                alertDialog.setMessage("Kullanıcıyı silmek istediğinizden emin misiniz?");
+                alertDialog.setCancelable(false);
+                alertDialog.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        fragment.remove(myViewHolder.username.getText().toString());
+
+                    }
+                });
+                alertDialog.setNegativeButton("Iptal", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialog.create().show();
+
+
+
+
             }
         });
     }
@@ -84,4 +106,5 @@ public class RemoveUserAdapter extends RecyclerView.Adapter<RemoveUserAdapter.My
         }
     }
 }
+
 

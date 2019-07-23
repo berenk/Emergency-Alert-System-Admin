@@ -1,9 +1,11 @@
 package com.example.emergencyalertadmin.Fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.emergencyalertadmin.Activities.Main2Activity;
 import com.example.emergencyalertadmin.RemoveUserAdapter;
 import com.example.emergencyalertadmin.Model.User;
 import com.example.emergencyalertadmin.R;
@@ -97,5 +100,27 @@ public class RemoveUserFragment extends Fragment {
             }
         });
     }
+   /* public void createDialog() {
+        AlertDialog.Builder alertDlg = new AlertDialog.Builder(this.getActivity().getApplicationContext());
+        alertDlg.setMessage("Çıkış yapmak istediğinizden emin misiniz?");
+        alertDlg.setCancelable(false);
+
+        alertDlg.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+        alertDlg.setNegativeButton("Iptal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+
+            }
+        });
+        alertDlg.create().show();
+    }*/
 
 }
