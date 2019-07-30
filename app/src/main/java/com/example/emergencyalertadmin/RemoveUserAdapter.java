@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +48,7 @@ public class RemoveUserAdapter extends RecyclerView.Adapter<RemoveUserAdapter.My
     public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
         myViewHolder.username.setText(list.get(i).getEmail());
         myViewHolder.category.setText(list.get(i).getCategory());
-        myViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+        myViewHolder.update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ChangeFragment changeFragment = new ChangeFragment(context);
@@ -94,7 +95,8 @@ public class RemoveUserAdapter extends RecyclerView.Adapter<RemoveUserAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView username;
-        Button remove;
+        ImageView remove;
+        ImageView update;
         TextView category;
         CardView cardView;
 
@@ -102,6 +104,7 @@ public class RemoveUserAdapter extends RecyclerView.Adapter<RemoveUserAdapter.My
             super(itemView);
             username = itemView.findViewById(R.id.usr_name);
             remove = itemView.findViewById(R.id.removeUser);
+            update = itemView.findViewById(R.id.updateUser);
             category = itemView.findViewById(R.id.category);
             cardView = itemView.findViewById(R.id.cardview);
         }

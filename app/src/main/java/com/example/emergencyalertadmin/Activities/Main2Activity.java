@@ -103,6 +103,9 @@ public class Main2Activity extends AppCompatActivity
         usermailTextView.setText(user.getEmail());
 
 
+        ChangeFragment changeFragment = new ChangeFragment(this);
+        changeFragment.change(new PushNotificationFragment());
+
     }
 
     @Override

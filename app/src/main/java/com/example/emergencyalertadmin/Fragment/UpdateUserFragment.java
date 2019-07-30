@@ -1,11 +1,13 @@
 package com.example.emergencyalertadmin.Fragment;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,12 +58,36 @@ public class UpdateUserFragment extends Fragment {
         initialCategory = categoryName;
         username.setText(getArguments().getString("username"));
         list();
-        belirtectext.setText("şuan "+ categoryName + " de bulunuyor.");
+        belirtectext.setText("Şu an "+ categoryName + " de bulunuyor.");
         button.setText("Değişiklik yok");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateCategory(username.getText().toString());
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(v.getContext());
+                alertDlg.setTitle("Bu kullanıcıyı güncellemek istediğinizden emin misiniz ?");
+
+                alertDlg.setMessage(" Kullanıcı adı : " + username.getText().toString() + "\n\n" +
+                        "Güncel kategori : " + categoryName + "\n\n" +
+                        "Yeni Kategori : " + category.getSelectedItem().toString());
+                alertDlg.setCancelable(false);
+
+                alertDlg.setPositiveButton("Onayla", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        updateCategory(username.getText().toString());
+                    }
+                });
+                alertDlg.setNegativeButton("Vazgeç", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+
+                    }
+                });
+                alertDlg.create().show();
+
+
             }
         });
 

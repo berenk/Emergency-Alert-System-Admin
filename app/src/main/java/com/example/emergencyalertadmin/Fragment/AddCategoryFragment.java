@@ -1,9 +1,11 @@
 package com.example.emergencyalertadmin.Fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,10 +43,34 @@ public class AddCategoryFragment extends Fragment {
         add_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchCategory(category_name.getText().toString(),category_description.getText().toString());
-                System.out.println();
-                category_description.getText().clear();
-                category_name.getText().clear();
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(v.getContext());
+                alertDlg.setTitle("Bu kategoriyi eklemek istediğinizden emin misiniz ?");
+
+                alertDlg.setMessage(" Kategori : " + category_name.getText().toString() + "\n\n" +
+                        "Açıklama : " + category_description.getText().toString());
+                alertDlg.setCancelable(false);
+
+                alertDlg.setPositiveButton("Onayla", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        searchCategory(category_name.getText().toString(),category_description.getText().toString());
+                        category_description.getText().clear();
+                        category_name.getText().clear();
+                    }
+                });
+                alertDlg.setNegativeButton("Vazgeç", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+
+                    }
+                });
+                alertDlg.create().show();
+
+
+
+
             }
         });
         return view;

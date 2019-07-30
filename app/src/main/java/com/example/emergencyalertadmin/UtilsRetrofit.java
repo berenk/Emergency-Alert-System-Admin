@@ -30,7 +30,7 @@ public class UtilsRetrofit {
 
                 @Override
                 public void onFailure(Call<JsonElement> call, Throwable t) {
-
+                    System.out.println(t.toString());
                 }
             });
 

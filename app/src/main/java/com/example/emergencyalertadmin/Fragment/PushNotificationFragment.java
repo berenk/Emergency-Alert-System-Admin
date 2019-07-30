@@ -1,11 +1,13 @@
 package com.example.emergencyalertadmin.Fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,12 +79,35 @@ public class PushNotificationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()) {
-                    NotificationModel notificationModel = new NotificationModel(title.getText().toString(), body.getText().toString(), spinner.getSelectedItem().toString());
-                    UtilsRetrofit.getOurInstance().sendNotification(notificationModel, getActivity());
-                    insertData(title.getText().toString(), body.getText().toString(), spinner.getSelectedItem().toString());
-                    Toast.makeText(getActivity(), "Duyuru başarıyla gönderildi", Toast.LENGTH_LONG).show();
-                    title.getText().clear();
-                    body.getText().clear();
+                    AlertDialog.Builder alertDlg = new AlertDialog.Builder(v.getContext());
+                    alertDlg.setTitle("Bu duyuruyu paylaşmak istediğinizden emin misiniz ?");
+
+                    alertDlg.setMessage("Başlık : " + title.getText().toString() + "\n\n" +
+                            "İçerik : " + body.getText().toString());
+                    alertDlg.setCancelable(false);
+
+                    alertDlg.setPositiveButton("Onayla", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            NotificationModel notificationModel = new NotificationModel(title.getText().toString(), body.getText().toString(), spinner.getSelectedItem().toString());
+                            UtilsRetrofit.getOurInstance().sendNotification(notificationModel, getActivity());
+                            insertData(title.getText().toString(), body.getText().toString(), spinner.getSelectedItem().toString());
+                            Toast.makeText(getActivity(), "Duyuru başarıyla gönderildi", Toast.LENGTH_LONG).show();
+                            title.getText().clear();
+                            body.getText().clear();
+                        }
+                    });
+                    alertDlg.setNegativeButton("Vazgeç", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+
+                        }
+                    });
+                    alertDlg.create().show();
+
+
 
                 }
             }

@@ -20,8 +20,8 @@
             android:title="Kullanıcı Ekle" />
             <item
                 android:id="@+id/remove_user"
-                android:icon="@drawable/ic_delete"
-                android:title="Kullanıcı Sil veya Değiştir" />
+                android:icon="@drawable/ic_edit"
+                android:title="Kullanıcı Düzenle" />
 
         </menu>
     </item>
