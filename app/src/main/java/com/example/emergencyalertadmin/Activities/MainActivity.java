@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements  ILoginView {
     EditText username, password;
     Button button;
     CheckBox rememberMeCheckbox ;
+    boolean isLoginAvailable = true;
+
     SharedPreferences mPrefs;
     static final String PREFS_NAME = "PrefsFile";
 
@@ -30,25 +32,22 @@ public class MainActivity extends AppCompatActivity implements  ILoginView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-          setContentView(R.layout.activity_main);
-
-
-
-
-
-
-
-
+        setContentView(R.layout.activity_main);
         loginPresenter = new LoginPresenter(this);
-         Init();
-         mPrefs=getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
-         getPreferencesData();
+        Init();
+        mPrefs=getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+        getPreferencesData();
 
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                    if (!isLoginAvailable) {
+                        Toast.makeText(getApplicationContext(),"Lütfen devam eden işlemin bitmesini bekleyiniz.",Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     loginPresenter.onLogin(username.getText().toString(),password.getText().toString());
+                    isLoginAvailable = false;
                     if(rememberMeCheckbox.isChecked()){
                         Boolean boolisChecked = rememberMeCheckbox.isChecked();
                         SharedPreferences.Editor editor=mPrefs.edit();
@@ -95,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements  ILoginView {
 
     @Override
     public void onLoginResult(String message) {
+        isLoginAvailable = true;
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
     }
 }

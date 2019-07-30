@@ -74,7 +74,7 @@
                 android:layout_gravity="center"
 
                 android:background="@drawable/oval_white"
-                android:text="Giris"
+                android:text="Giriş Yap"
                 android:textColor="#000" />
 
             <CheckBox

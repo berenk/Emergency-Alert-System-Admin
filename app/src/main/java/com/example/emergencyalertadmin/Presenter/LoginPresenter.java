@@ -33,11 +33,11 @@ public class LoginPresenter implements ILoginPresenter {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Intent i = new Intent((Context) loginView, Main2Activity.class);
-                        loginView.onLoginResult("Başarılı");
+                        loginView.onLoginResult("Giriş Yapıldı");
                         ((Activity)loginView).finish();
                         ((Context) loginView).startActivity(i);
                     } else {
-                        loginView.onLoginResult("Başarısız");
+                        loginView.onLoginResult("Giriş Yapılamadı");
                     }
                 }
             });
