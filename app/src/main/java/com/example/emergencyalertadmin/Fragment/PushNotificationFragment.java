@@ -138,7 +138,7 @@ public class PushNotificationFragment extends Fragment {
         notif.put("body", body);
         notif.put("category", selectedCategory);
         Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = df.format(c);
 
 
